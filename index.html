@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Den.ai - Scroll-Based AI Creative Directory</title>
+    <meta name="description" content="Discover Den.ai: a visual portal of top creative AI tools. Scroll to experience a smooth animation with high-fidelity reviews.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Space Background Canvas -->
+    <canvas id="spaceCanvas"></canvas>
+
+    <!-- Premium Creative Loader -->
+    <div id="loader" class="loader-wrapper">
+        <div class="loader-content">
+            <div class="loader-neon-circle"></div>
+            <h1 class="loader-title">DEN.AI</h1>
+            <p class="loader-subtitle">STABILIZING SCROLL CORE...</p>
+        </div>
+    </div>
+
+    <!-- Custom Glowing Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="logo" id="logo-nav">
+                <span class="logo-accent">DEN</span>.AI
+            </a>
+            <nav class="nav-links">
+                <a href="#hero" class="nav-item active" id="nav-hero">INTRO</a>
+                <a href="#chatbots" class="nav-item" id="nav-chats">01 // CHAT</a>
+                <a href="#image-gen" class="nav-item" id="nav-img">02 // IMAGES</a>
+                <a href="#video-gen" class="nav-item" id="nav-video">03 // VIDEO</a>
+                <a href="#web-gen" class="nav-item" id="nav-web">04 // WEB</a>
+                <a href="#app-dev" class="nav-item" id="nav-apps">05 // APPS</a>
+                <a href="#productivity" class="nav-item" id="nav-utils">06 // UTILS</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#chatbots" class="cta-button" id="header-cta">LAUNCH PORTAL</a>
+            </div>
+            <!-- Hamburger (mobile only) -->
+            <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+        <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+        <nav class="mobile-nav-panel">
+            <a href="#hero" class="nav-item active" data-mobile-nav>INTRO</a>
+            <a href="#chatbots" class="nav-item" data-mobile-nav>01 // CHAT</a>
+            <a href="#image-gen" class="nav-item" data-mobile-nav>02 // IMAGES</a>
+            <a href="#video-gen" class="nav-item" data-mobile-nav>03 // VIDEO</a>
+            <a href="#web-gen" class="nav-item" data-mobile-nav>04 // WEB</a>
+            <a href="#app-dev" class="nav-item" data-mobile-nav>05 // APPS</a>
+            <a href="#productivity" class="nav-item" data-mobile-nav>06 // UTILS</a>
+            <div class="mobile-nav-cta">
+                <a href="#chatbots" class="cta-button" data-mobile-nav>LAUNCH PORTAL</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Side HUD Control panel -->
+    <div class="hud-console" id="hudConsole">
+        <div class="hud-header">⬡ SYSTEM MONITOR</div>
+        <div class="hud-row"><span>PORTAL:</span> <span id="hud-portal-name" class="hud-value">INTRO</span></div>
+        <div class="hud-row"><span>FRAME:</span> <span id="hud-frame-val" class="hud-value">1 / 5</span></div>
+        <div class="hud-row"><span>SYNC STATE:</span> <span id="hud-sync-val" class="hud-value-g">● ONLINE</span></div>
+    </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Parallax Visual Viewport -->
+    <div class="visual-viewport" id="visualViewport">
+        <div class="image-sequence" id="imageSequence">
+            <img src="assets/frame1.jpg" alt="AI Frame 1" class="sequence-frame active" id="frame1">
+            <img src="assets/frame2.jpg" alt="AI Frame 2" class="sequence-frame" id="frame2">
+            <img src="assets/frame3.jpg" alt="AI Frame 3" class="sequence-frame" id="frame3">
+            <img src="assets/frame4.jpg" alt="AI Frame 4" class="sequence-frame" id="frame4">
+            <img src="assets/frame5.jpg" alt="AI Frame 5" class="sequence-frame" id="frame5">
+        </div>
+        <div class="light-mask-overlay"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Scrollable Content Layers -->
+    <main class="scroll-container">
+
+        <!-- 00 // HERO INTRO -->
+        <section id="hero" class="scroll-section hero-section active">
+            <div class="section-content hero-content">
+                <div class="glitch-wrapper">
+                    <span class="cyber-badge" id="system-status-badge">◈ PORTAL OVERLAY STABLE</span>
+                    <h1 class="hero-title">DEN.AI</h1>
+                    <p class="hero-subtitle">The Ultimate Interactive Directory of Free-Tier Creative AI Technologies</p>
+                </div>
+                <div class="hero-actions">
+                    <a href="#chatbots" class="btn btn-primary" id="explore-btn">
+                        <span>SYNC & EXPLORE</span>
+                        <svg class="btn-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="#chatbots" class="btn btn-secondary" id="explore-btn-2">
+                        <span>VIEW ALL TOOLS</span>
+                    </a>
+                </div>
+                <div class="scroll-hint" id="scroll-hint-element">
+                    <p>SCROLL TO ANIMATE BACKDROP</p>
+                    <div class="scroll-indicator-arrow">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 01 // CHATBOTS & ASSISTANTS -->
+        <section id="chatbots" class="scroll-section">
+            <div class="section-content">
+                <div class="category-info-panel">
+                    <span class="category-index">01 // CHATBOTS & ASSISTANTS</span>
+                    <h2 class="category-heading">CONVERSATION</h2>
+                    <p class="category-desc">
+                        Interact with state-of-the-art conversational agents. These free-access models deliver high-level reasoning, code drafting, and real-time research.
+                    </p>
+                </div>
+                <div class="cards-grid">
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">GOOGLE</span>
+                            <h3 class="card-title">Gemini</h3>
+                            <div class="card-limit-badge">Standard Speed // Unlimited Chat</div>
+                            <p class="card-text">Best for accessing a massive context window to upload and analyze large files and texts completely free.</p>
+                            <a href="https://gemini.google.com" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">OPENAI</span>
+                            <h3 class="card-title">ChatGPT</h3>
+                            <div class="card-limit-badge">GPT-4o (Dynamic Daily Limit)</div>
+                            <p class="card-text">Provides deep search capability, image generation (DALL-E), and high-level reasoning with dynamic daily usage caps.</p>
+                            <a href="https://chatgpt.com" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">ANTHROPIC</span>
+                            <h3 class="card-title">Claude</h3>
+                            <div class="card-limit-badge">Sonnet 4.6 (Rolling Limits)</div>
+                            <p class="card-text">Features the Artifacts interface to create, display, and code responsive apps or web code right next to your chat.</p>
+                            <a href="https://claude.ai" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">SEARCH ENGINE</span>
+                            <h3 class="card-title">Perplexity</h3>
+                            <div class="card-limit-badge">Unlimited Basic // 5 Copilots Daily</div>
+                            <p class="card-text">Combines web search and LLMs to create clean, structured reports complete with inline source links.</p>
+                            <a href="https://perplexity.ai" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">OPEN PLATFORM</span>
+                            <h3 class="card-title">DeepSeek</h3>
+                            <div class="card-limit-badge">100% Free // Zero Caps</div>
+                            <p class="card-text">Super-fast text generation and advanced coding logic without daily rate limits or strict billing locks.</p>
+                            <a href="https://deepseek.com" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">MICROSOFT</span>
+                            <h3 class="card-title">Copilot</h3>
+                            <div class="card-limit-badge">Free GPT-4o // Standard Web</div>
+                            <p class="card-text">Easily toggles between Precise, Creative, and Balanced modes, operating directly inside Windows or Edge.</p>
+                            <a href="https://copilot.microsoft.com" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">OPEN SOURCE</span>
+                            <h3 class="card-title">HuggingChat</h3>
+                            <div class="card-limit-badge">100% Free // Model Swapping</div>
+                            <p class="card-text">Allows you to instantly load and interact with top open-source LLMs (like Llama 3, Qwen) for free.</p>
+                            <a href="https://huggingface.co/chat" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 // IMAGE GENERATION -->
+        <section id="image-gen" class="scroll-section">
+            <div class="section-content">
+                <div class="category-info-panel">
+                    <span class="category-index">02 // IMAGE GENERATION & EDITING</span>
+                    <h2 class="category-heading">SYNTHESIS</h2>
+                    <p class="category-desc">Synthesize high-fidelity illustrations, vectors, and realistic assets. These platforms offer robust daily free credits and powerful base models.</p>
+                </div>
+                <div class="cards-grid">
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">MICROSOFT</span>
+                            <h3 class="card-title">Bing Image Creator</h3>
+                            <div class="card-limit-badge">15 Fast Boosts Daily // Slower After</div>
+                            <p class="card-text">Powered entirely by DALL-E 3, generating rich details, exact prompts, and high-fidelity anime styling.</p>
+                            <a href="https://bing.com/create" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">TYPOGRAPHY</span>
+                            <h3 class="card-title">Ideogram</h3>
+                            <div class="card-limit-badge">10 Prompts (40 Images) Daily</div>
+                            <p class="card-text">Unmatched free text-in-image rendering, making it the perfect tool for logos, banners, and poster designs.</p>
+                            <a href="https://ideogram.ai" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">COMMERCIAL SAFE</span>
+                            <h3 class="card-title">Adobe Firefly</h3>
+                            <div class="card-limit-badge">25 Generative Credits Monthly</div>
+                            <p class="card-text">Generates commercially safe graphics, vector recolors, and clean background expansions.</p>
+                            <a href="https://firefly.adobe.com" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">ANIME SPECIALIST</span>
+                            <h3 class="card-title">SeaArt AI</h3>
+                            <div class="card-limit-badge">150 Free Credits Daily</div>
+                            <p class="card-text">Includes high-quality face-swapping, LoRA database loading, and built-in anime model upscale pipelines.</p>
+                            <a href="https://seaart.ai" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">CREATIVE SUITE</span>
+                            <h3 class="card-title">Leonardo.ai</h3>
+                            <div class="card-limit-badge">150 Free Tokens Daily</div>
+                            <p class="card-text">Exceptional asset control for game design, character layout styling, and custom fine-tuned model weights.</p>
+                            <a href="https://leonardo.ai" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">FLUX ENGINE</span>
+                            <h3 class="card-title">PicLumen</h3>
+                            <div class="card-limit-badge">100% Free // Unrestricted</div>
+                            <p class="card-text">Provides unrestricted free access to state-of-the-art FLUX.1 [schnell] models for rich photorealism.</p>
+                            <a href="https://piclumen.com" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">DESIGN UTILITY</span>
+                            <h3 class="card-title">Canva Magic Media</h3>
+                            <div class="card-limit-badge">50 Lifetime Free Generations</div>
+                            <p class="card-text">Perfect for dragging and dropping AI graphics directly into visual templates, slide decks, and marketing posters.</p>
+                            <a href="https://canva.com" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 // VIDEO GENERATION -->
+        <section id="video-gen" class="scroll-section">
+            <div class="section-content">
+                <div class="category-info-panel">
+                    <span class="category-index">03 // VIDEO GENERATION & SUITES</span>
+                    <h2 class="category-heading">MOTION</h2>
+                    <p class="category-desc">Translate ideas or static images into dynamic cinematics. Explore tools for framing, lip-syncing, character physics, and short clipping.</p>
+                </div>
+                <div class="cards-grid">
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">CINEMATICS</span>
+                            <h3 class="card-title">Luma Dream Machine</h3>
+                            <div class="card-limit-badge">30 Free Videos Monthly</div>
+                            <p class="card-text">Exceptional at rendering fluid, cinematic tracking shots, panning, and spatial transitions from simple prompts.</p>
+                            <a href="https://lumalabs.ai/dream-machine" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">PHYSICS</span>
+                            <h3 class="card-title">Kling AI</h3>
+                            <div class="card-limit-badge">66 Free Credits Daily (6 Videos)</div>
+                            <p class="card-text">Specializes in hyper-realistic human joint movement, physics modeling, and complex character interactions.</p>
+                            <a href="https://klingai.com" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">INDUSTRY STD</span>
+                            <h3 class="card-title">Runway (Gen-3)</h3>
+                            <div class="card-limit-badge">125 Free Credits (One-Time)</div>
+                            <p class="card-text">Great for experimenting with high-concept cinematic generations, camera motion brushes, and upscale filters.</p>
+                            <a href="https://runwayml.com" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">AVATARS</span>
+                            <h3 class="card-title">HeyGen</h3>
+                            <div class="card-limit-badge">1 Free Credit Trial</div>
+                            <p class="card-text">Produces hyper-realistic, photorealistic speaking avatars with precise lip-syncing for marketing explainers.</p>
+                            <a href="https://heygen.com" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">ANIMATION</span>
+                            <h3 class="card-title">Pika Labs</h3>
+                            <div class="card-limit-badge">30 Credits Weekly</div>
+                            <p class="card-text">Excellent for adding motion to static anime files, canvas expansion, and modifying objects inside videos.</p>
+                            <a href="https://pika.art" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">SHORTS CLIPPING</span>
+                            <h3 class="card-title">OpusClip</h3>
+                            <div class="card-limit-badge">60 Mins Free Processing</div>
+                            <p class="card-text">Analyzes long-form podcasts/videos and clips them into highly engaging, captioned, vertical shorts.</p>
+                            <a href="https://opus.pro" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">CONSISTENCY</span>
+                            <h3 class="card-title">Viggle AI</h3>
+                            <div class="card-limit-badge">100% Free on Discord</div>
+                            <p class="card-text">Upload a character image and overlay their structure onto a target motion video for perfect action animation.</p>
+                            <a href="https://viggle.ai" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 // WEBSITE GENERATION -->
+        <section id="web-gen" class="scroll-section">
+            <div class="section-content">
+                <div class="category-info-panel">
+                    <span class="category-index">04 // WEBSITE GENERATION</span>
+                    <h2 class="category-heading">STRUCTURE</h2>
+                    <p class="category-desc">Build responsive web layouts, prototypes, and landing pages using semantic text prompts without writing code manually.</p>
+                </div>
+                <div class="cards-grid">
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">LAYOUTS</span>
+                            <h3 class="card-title">Framer AI</h3>
+                            <div class="card-limit-badge">Free Subdomain (.framer.ai)</div>
+                            <p class="card-text">Generates complex landing pages with beautiful scroll animations and editable visual blocks in seconds.</p>
+                            <a href="https://framer.com" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">COMPONENTS</span>
+                            <h3 class="card-title">V0</h3>
+                            <div class="card-limit-badge">$5 Monthly Free Credits</div>
+                            <p class="card-text">Generates ready-to-use React, Tailwind CSS, and HTML web components that can be copied directly into your codebase.</p>
+                            <a href="https://v0.dev" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">DOCS & SLIDES</span>
+                            <h3 class="card-title">Gamma App</h3>
+                            <div class="card-limit-badge">400 Signup Credits (10 Pages)</div>
+                            <p class="card-text">Exceptional at converting prompts into responsive single-page visual presentations and quick sites.</p>
+                            <a href="https://gamma.app" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">VALIDATION</span>
+                            <h3 class="card-title">Mixo.io</h3>
+                            <div class="card-limit-badge">Free Single Page Build</div>
+                            <p class="card-text">Launches a startup landing page complete with copy, mockups, and an email signup form in under 60 seconds.</p>
+                            <a href="https://mixo.io" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">3D ANIMATION</span>
+                            <h3 class="card-title">Dora AI</h3>
+                            <div class="card-limit-badge">Free Basic Credits</div>
+                            <p class="card-text">Generates 3D elements, interactive camera angles, and advanced scroll-based 3D scene compositions.</p>
+                            <a href="https://dora.run" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">CMS SUITE</span>
+                            <h3 class="card-title">Wix Studio AI</h3>
+                            <div class="card-limit-badge">Free Editor Canvas Access</div>
+                            <p class="card-text">Generates structural grid sections, content layout cards, and custom CSS modifications using text input.</p>
+                            <a href="https://wix.com/studio" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 // APP DEVELOPMENT -->
+        <section id="app-dev" class="scroll-section">
+            <div class="section-content">
+                <div class="category-info-panel">
+                    <span class="category-index">05 // APP DEVELOPMENT & "VIBE-CODING"</span>
+                    <h2 class="category-heading">PROGRAMMING</h2>
+                    <p class="category-desc">Build functional applications, servers, and dashboards directly from system diagrams or text descriptions without manual boilerplate programming.</p>
+                </div>
+                <div class="cards-grid">
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">IDE FORK</span>
+                            <h3 class="card-title">Cursor</h3>
+                            <div class="card-limit-badge">Free 2-Week Pro Trial // Basic Free After</div>
+                            <p class="card-text">Full-scale desktop code editor that reads your entire workspace, providing multi-file edits and automated terminal command execution.</p>
+                            <a href="https://cursor.com" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">FULL-STACK</span>
+                            <h3 class="card-title">Bolt.new</h3>
+                            <div class="card-limit-badge">1M Tokens Monthly (300K Daily)</div>
+                            <p class="card-text">Builds, debugs, handles databases, and runs full-stack node/react web apps in an isolated sandbox right inside the browser.</p>
+                            <a href="https://bolt.new" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">FAST SHIP</span>
+                            <h3 class="card-title">Lovable.dev</h3>
+                            <div class="card-limit-badge">5 Daily Generation Credits</div>
+                            <p class="card-text">Exceptional at translating highly complex visual prompt descriptions and screenshots into beautiful, clean software code.</p>
+                            <a href="https://lovable.dev" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">GOOGLE WORKSPACE</span>
+                            <h3 class="card-title">IDX</h3>
+                            <div class="card-limit-badge">100% Free Cloud VM</div>
+                            <p class="card-text">Cloud-based VM coding environment featuring built-in, direct iOS and Android simulators directly inside your browser tabs.</p>
+                            <a href="https://idx.dev" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">CLOUD AGENT</span>
+                            <h3 class="card-title">Replit Agent</h3>
+                            <div class="card-limit-badge">Free Workspace // Daily AI Limits</div>
+                            <p class="card-text">Autonomously writes backend databases, configures APIs, installs dependencies, and deploys projects with single-click hosting.</p>
+                            <a href="https://replit.com" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">MOBILE CODE</span>
+                            <h3 class="card-title">FlutterFlow AI</h3>
+                            <div class="card-limit-badge">Free Basic Widget Generator</div>
+                            <p class="card-text">Brainstorms, structures, and outputs UI layout code blocks directly ready to drop into cross-platform mobile apps.</p>
+                            <a href="https://flutterflow.io" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 06 // PRODUCTIVITY -->
+        <section id="productivity" class="scroll-section">
+            <div class="section-content">
+                <div class="category-info-panel">
+                    <span class="category-index">06 // PRODUCTIVITY, AUDIO, & BUSINESS</span>
+                    <h2 class="category-heading">UTILITIES</h2>
+                    <p class="category-desc">Supercharge workflows, voice narration, song synthesis, meeting note aggregation, and autonomous workflow chains.</p>
+                </div>
+                <div class="cards-grid">
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">AUDIO VOICE</span>
+                            <h3 class="card-title">ElevenLabs</h3>
+                            <div class="card-limit-badge">10,000 Characters Monthly</div>
+                            <p class="card-text">Features the most realistic, emotionally expressive, and synthetically matched text-to-speech voiceovers globally.</p>
+                            <a href="https://elevenlabs.io" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">MEETING BOT</span>
+                            <h3 class="card-title">Fathom</h3>
+                            <div class="card-limit-badge">100% Free // Unlimited Meetings</div>
+                            <p class="card-text">Integrates directly into Zoom/Meet to record, transcribe, index speaker details, and output clean summaries.</p>
+                            <a href="https://fathom.video" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">MUSIC CO-WRITER</span>
+                            <h3 class="card-title">Suno AI</h3>
+                            <div class="card-limit-badge">50 Daily Tokens (2 Songs)</div>
+                            <p class="card-text">Creates full musical tracks with vocals, instrumentation, and lyrics from basic atmospheric descriptions.</p>
+                            <a href="https://suno.com" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">AUDIO EDITING</span>
+                            <h3 class="card-title">Udio</h3>
+                            <div class="card-limit-badge">100 Credits Monthly</div>
+                            <p class="card-text">Produces outstanding high-fidelity track compositions, vocal harmonizations, and seamless song remixes.</p>
+                            <a href="https://udio.com" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">VOICEOVERS</span>
+                            <h3 class="card-title">Lovo.ai</h3>
+                            <div class="card-limit-badge">20 Mins Voice Sharing Monthly</div>
+                            <p class="card-text">Perfect for video game voice acting, explainer narration, and marketing-friendly localized voice profiles.</p>
+                            <a href="https://lovo.ai" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">AUTOMATION</span>
+                            <h3 class="card-title">Zapier</h3>
+                            <div class="card-limit-badge">100 Free Tasks Monthly</div>
+                            <p class="card-text">Connects thousands of web tools together, automating triggers and operations (e.g. Google Sheets to Discord).</p>
+                            <a href="https://zapier.com" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="market-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">NOTE AGGREGATION</span>
+                            <h3 class="card-title">Granola AI</h3>
+                            <div class="card-limit-badge">25 Free Meetings Processed</div>
+                            <p class="card-text">Processes raw local meeting recordings, converting them into structured, engineering-grade sprint notes.</p>
+                            <a href="https://granola.so" target="_blank" rel="noopener" class="card-link">Open Tool <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <footer class="cyber-footer">
+                    <div class="footer-divider"></div>
+                    <div class="footer-content">
+                        <p class="copyright">© 2026 DEN.AI // DISCONNECT READY.</p>
+                        <a href="#hero" class="back-to-top" id="btn-back-to-top">↑ RE-SYNC PORTAL // BACK TO TOP</a>
+                    </div>
+                </footer>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="space-bg.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
